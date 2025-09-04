@@ -44,6 +44,8 @@ namespace MW2_GT
                 SetInGameInfo(Gamertag, Xbox360.ReadString(0x82687060, 4));
 
             Xbox360.WriteString(0x838BA824, Gamertag);
+
+            Xbox360.XNotify("Gamertag set!");
         }
 
         public void SetClantag(string Clantag) {
@@ -56,6 +58,8 @@ namespace MW2_GT
                 SetInGameInfo(Xbox360.ReadString(0x838BA824, 16), Clantag);
 
             Xbox360.WriteString(0x82687060, Clantag);
+
+            Xbox360.XNotify("Clantag set!");
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -67,15 +71,14 @@ namespace MW2_GT
         private void button2_Click(object sender, EventArgs e) {
             if (Xbox360 != null) {
                 SetClantag(textBox1.Text);
-                Xbox360.XNotify("Clantag set!");
             }
         }
 
         private void button3_Click(object sender, EventArgs e) {
             if (Xbox360 != null) {
                 SetGamertag(textBox2.Text);
-                Xbox360.XNotify("Gamertag set!");
             }
         }
     }
 }
+
